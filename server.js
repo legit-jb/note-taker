@@ -8,18 +8,18 @@ app.use(express.urlencoded({ extended: true }));
 // serve static files
 app.use(express.static("public"));
 
-
 // Listener
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
+
 // routes
 app.get("/notes", (req, res) =>
 {
-    res.sendFile(path.join(__dirname, "/../public/notes.html"));
+    res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 // end of get
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join (__dirname, "/../public/index.html"));
+    res.sendFile(path.join (__dirname, "./public/index.html"));
 });
 // end of get
 
@@ -38,7 +38,7 @@ app.post("/api/notes", (req, res) => {
     // adds the newNote to the notesArray
     notesArray.push(newNote);
     // writes the newly appended array to db.json
-    fs.writeFile(__dirname + "/../db/db.json", JSON.stringify(noteData), (err) => {
+    fs.writeFile(__dirname + "./db/db.json", JSON.stringify(noteData), (err) => {
         if (err) throw err;
     });
     res.end;
