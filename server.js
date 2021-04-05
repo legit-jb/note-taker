@@ -12,14 +12,14 @@ app.use(express.static("public"));
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
 
 // routes
-app.get("/notes", (req, res) =>
-{
-    res.json(path.join(__dirname, "./public/notes.html"));
+app.get("/notes", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/notes.html"));
 });
+
 // end of get
 
 app.get("*", (req, res) => {
-    res.json(path.join (__dirname, "./public/index.html"));
+    res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 // end of get
 
@@ -53,7 +53,7 @@ app.delete("/api/notes/:id", (req, res) => {
     if (axedNoteId) {
         notesArray.splice(axedNoteId);
     } else {
-        console.log ("note doesn't exist!");
+        console.log("note doesn't exist!");
     }
     res.end;
 })
