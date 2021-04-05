@@ -14,12 +14,12 @@ app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
 // routes
 app.get("/notes", (req, res) =>
 {
-    res.sendFile(path.join(__dirname, "./public/notes.html"));
+    res.json(path.join(__dirname, "./public/notes.html"));
 });
 // end of get
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join (__dirname, "./public/index.html"));
+    res.json(path.join (__dirname, "./public/index.html"));
 });
 // end of get
 
